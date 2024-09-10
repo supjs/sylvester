@@ -1,5 +1,5 @@
 import { LineSegment } from './line.segment.js';
-import { MatrixRotation } from './matrix.js';
+import { Matrix } from './matrix.js';
 import { Plane } from './plane.js';
 import { PolygonVertex } from './polygonVertex.js';
 import { getPrecision } from './precision.js';
@@ -37,7 +37,7 @@ export class Polygon {
   }
 
   rotate(t, line) {
-    let R = new MatrixRotation(t, line.direction);
+    let R = Matrix.Rotation(t, line.direction);
     this.vertices.each(function (node) {
       node.data.setElements(node.data.rotate(R, line).elements);
     });
