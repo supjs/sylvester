@@ -1,4 +1,4 @@
-import { LineSegment } from './line.segment.js';
+import { LineSegment } from './lineSegment.js';
 import { Matrix } from './matrix.js';
 import { Plane } from './plane.js';
 import { PolygonVertex } from './polygonVertex.js';
