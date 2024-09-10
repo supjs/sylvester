@@ -480,7 +480,7 @@ export class Matrix {
     while (i--) {
       j = nj;
       while (j--) {
-        if (Math.abs(M.elements[i][j]) > getPrecision) {
+        if (Math.abs(M.elements[i][j]) > getPrecision()) {
           rank++;
           break;
         }

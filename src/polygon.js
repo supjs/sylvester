@@ -263,7 +263,7 @@ export class Polygon {
         return;
       }
       theta += (A.cross(B).isParallelTo(self.plane.normal) ? 1 : -1) * dt;
-      if (theta >= 2 * Math.PI - getPrecision) {
+      if (theta >= 2 * Math.PI - getPrecision()) {
         loops++;
         theta -= 2 * Math.PI;
       }
