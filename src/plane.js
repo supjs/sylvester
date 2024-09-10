@@ -159,7 +159,7 @@ export class Plane {
       let diff = Math.abs(
         N[0] * (A[0] - P[0]) + N[1] * (A[1] - P[1]) + N[2] * (A[2] - (P[2] || 0)),
       );
-      return diff <= getPrecision()();
+      return diff <= getPrecision();
     }
   }
 
