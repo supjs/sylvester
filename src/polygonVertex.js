@@ -36,7 +36,7 @@ export class PolygonVertex extends Vector {
     let A = next.subtract(this);
     let B = prev.subtract(this);
     let theta = A.angleFrom(B);
-    if (theta <= getPrecision) {
+    if (theta <= getPrecision()) {
       return true;
     }
     if (Math.abs(theta - Math.PI) <= getPrecision()) {
