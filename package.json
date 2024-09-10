@@ -4,6 +4,9 @@
   "description": "A modern fork of sylvester.",
   "type": "module",
   "main": "src/index.js",
+  "scripts": {
+    "test": "vitest"
+  },
   "prettier": {
     "singleQuote": true
   },
@@ -22,6 +25,7 @@
     "sylvester"
   ],
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "vitest": "^2.0.5"
   }
 }
