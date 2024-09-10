@@ -1,10 +1,7 @@
+import { Matrix } from './matrix.js';
 import { getPrecision } from './precision.js';
 
 export class Vector {
-  constructor(elements) {
-    this.setElements(elements);
-  }
-
   static Random(n) {
     let elements = [];
     while (n--) {
@@ -24,6 +21,10 @@ export class Vector {
   static i = new Vector([1, 0, 0]);
   static j = new Vector([0, 1, 0]);
   static k = new Vector([0, 0, 1]);
+
+  constructor(elements) {
+    this.setElements(elements);
+  }
 
   e(i) {
     return i < 1 || i > this.elements.length ? null : this.elements[i - 1];
@@ -200,7 +201,7 @@ export class Vector {
   }
 
   toDiagonalMatrix() {
-    return Sylvester.Matrix.Diagonal(this.elements);
+    return Matrix.Diagonal(this.elements);
   }
 
   round() {
@@ -256,7 +257,7 @@ export class Vector {
           return null;
         }
         if (!R) {
-          R = Sylvester.Matrix.Rotation(t).elements;
+          R = Matrix.Rotation(t).elements;
         }
         x = this.elements[0] - V[0];
         y = this.elements[1] - V[1];
@@ -267,7 +268,7 @@ export class Vector {
         }
         let C = obj.pointClosestTo(this).elements;
         if (!R) {
-          R = Sylvester.Matrix.Rotation(t, obj.direction).elements;
+          R = Matrix.Rotation(t, obj.direction).elements;
         }
         x = this.elements[0] - C[0];
         y = this.elements[1] - C[1];

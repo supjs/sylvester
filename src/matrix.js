@@ -2,10 +2,6 @@ import { getPrecision } from './precision.js';
 import { Vector } from './vector.js';
 
 export class Matrix {
-  constructor(elements) {
-    this.setElements(elements);
-  }
-
   static I(n) {
     let els = [],
       i = n,
@@ -105,6 +101,10 @@ export class Matrix {
       }
     }
     return new Matrix(els);
+  }
+
+  constructor(elements) {
+    this.setElements(elements);
   }
 
   e(i, j) {

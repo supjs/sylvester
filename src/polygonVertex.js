@@ -2,16 +2,6 @@ import { getPrecision } from './precision.js';
 import { Vector } from './vector.js';
 
 export class PolygonVertex extends Vector {
-  constructor(point) {
-    super(point);
-    if (this.elements.length === 2) {
-      this.elements.push(0);
-    }
-    if (this.elements.length !== 3) {
-      return null;
-    }
-  }
-
   // Method for converting a set of arrays/vectors/whatever to a set of Sylvester.Polygon.Vertex objects
   static convert = function (points) {
     let pointSet = points.toArray ? points.toArray() : points;
@@ -22,6 +12,16 @@ export class PolygonVertex extends Vector {
     }
     return list;
   };
+
+  constructor(point) {
+    super(point);
+    if (this.elements.length === 2) {
+      this.elements.push(0);
+    }
+    if (this.elements.length !== 3) {
+      return null;
+    }
+  }
 
   // Returns true iff the vertex's internal angle is 0 <= x < 180
   // in the context of the given polygon object. Returns null if the
