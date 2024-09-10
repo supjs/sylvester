@@ -5,5 +5,5 @@ export * from './matrix.js';
 export * from './plane.js';
 export * from './polygon.js';
 export * from './polygonVertex.js';
-export * from './precision';
+export * from './precision.js';
 export * from './vector.js';

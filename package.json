@@ -4,10 +4,6 @@
   "description": "A modern fork of sylvester.",
   "type": "module",
   "main": "src/index.js",
-  "files": [
-    "/src/**/*",
-    "!/src/**/*.test.js"
-  ],
   "scripts": {
     "test": "vitest"
   },
