@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.js",
   "files": [
-    "!/src/*.test.js"
+    "/src/**/*",
+    "!/src/**/*.test.js"
   ],
   "scripts": {
     "test": "vitest"
