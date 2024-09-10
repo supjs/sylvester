@@ -2,6 +2,7 @@
   "name": "@supjs/sylvester",
   "version": "0.0.1",
   "description": "A modern fork of sylvester.",
+  "type": "module",
   "main": "src/index.js",
   "prettier": {
     "singleQuote": true

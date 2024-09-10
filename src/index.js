@@ -1,1 +1,2 @@
-export * from './precision'
+export * from './precision';
+export * from './vector.js';
