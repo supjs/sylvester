@@ -1,6 +1,6 @@
 {
   "name": "@supjs/sylvester",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "A modern fork of sylvester.",
   "type": "module",
   "main": "src/index.js",
