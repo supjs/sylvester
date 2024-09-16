@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 import { Line } from './line.js';
 import { Plane } from './plane.js';
 import { LineSegment } from './lineSegment.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 
 test('dup', () => {
@@ -65,7 +65,7 @@ test('intersectionWith', () => {
 
 test('positionOf', () => {
   expect(
-    new Line([0, 0, 0], [1, 1, -1]).positionOf([3, 3, -3]) - Math.sqrt(27) <= getPrecision(),
+    new Line([0, 0, 0], [1, 1, -1]).positionOf([3, 3, -3]) - Math.sqrt(27) <= Sylvester.precision,
   ).toBeTruthy();
 });
 
@@ -87,7 +87,7 @@ test('distanceFrom', () => {
   expect(0).toEqual(new Line([12, 0, 0], [1, 0, 200]).distanceFrom(Plane.YZ));
   expect(
     Math.abs(Math.sqrt(18) - Line.X.distanceFrom(new LineSegment([12, 3, 3], [15, 4, 3]))) <=
-      getPrecision(),
+      Sylvester.precision,
   ).toBeTruthy();
 });
 

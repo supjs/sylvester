@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 import { LineSegment } from './lineSegment.js';
 import { Line } from './line.js';
 import { Plane } from './plane.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 
 const createSegments = () => {
   return {
@@ -29,7 +29,7 @@ test('dup', () => {
 
 test('length()', () => {
   const { segment } = createSegments();
-  expect(segment.length() - Math.sqrt(75) <= getPrecision()).toBeTruthy();
+  expect(segment.length() - Math.sqrt(75) <= Sylvester.precision).toBeTruthy();
 });
 
 test('toVector', () => {

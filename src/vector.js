@@ -1,5 +1,5 @@
 import { Matrix } from './matrix.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 
 export class Vector {
   static Random(n) {
@@ -45,7 +45,7 @@ export class Vector {
       return false;
     }
     while (n--) {
-      if (Math.abs(this.elements[n] - V[n]) > getPrecision()) {
+      if (Math.abs(this.elements[n] - V[n]) > Sylvester.precision) {
         return false;
       }
     }
@@ -113,17 +113,17 @@ export class Vector {
 
   isParallelTo(vector) {
     let angle = this.angleFrom(vector);
-    return angle === null ? null : angle <= getPrecision();
+    return angle === null ? null : angle <= Sylvester.precision;
   }
 
   isAntiparallelTo(vector) {
     let angle = this.angleFrom(vector);
-    return angle === null ? null : Math.abs(angle - Math.PI) <= getPrecision();
+    return angle === null ? null : Math.abs(angle - Math.PI) <= Sylvester.precision;
   }
 
   isPerpendicularTo(vector) {
     let dot = this.dot(vector);
-    return dot === null ? null : Math.abs(dot) <= getPrecision();
+    return dot === null ? null : Math.abs(dot) <= Sylvester.precision;
   }
 
   add(vector) {
@@ -212,7 +212,7 @@ export class Vector {
 
   snapTo(x) {
     return this.map(function (y) {
-      return Math.abs(y - x) <= getPrecision() ? x : y;
+      return Math.abs(y - x) <= Sylvester.precision ? x : y;
     });
   }
 

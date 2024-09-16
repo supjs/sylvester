@@ -1,4 +1,4 @@
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 
 export class PolygonVertex extends Vector {
@@ -36,10 +36,10 @@ export class PolygonVertex extends Vector {
     let A = next.subtract(this);
     let B = prev.subtract(this);
     let theta = A.angleFrom(B);
-    if (theta <= getPrecision()) {
+    if (theta <= Sylvester.precision) {
       return true;
     }
-    if (Math.abs(theta - Math.PI) <= getPrecision()) {
+    if (Math.abs(theta - Math.PI) <= Sylvester.precision) {
       return false;
     }
     return A.cross(B).dot(polygon.plane.normal) > 0;

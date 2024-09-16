@@ -1,5 +1,5 @@
-import { getPrecision } from './precision.js';
 import { Vector } from './vector.js';
+import { Sylvester } from './sylvester.js';
 
 export class Matrix {
   static I(n) {
@@ -172,7 +172,7 @@ export class Matrix {
     while (i--) {
       j = nj;
       while (j--) {
-        if (Math.abs(this.elements[i][j] - M[i][j]) > getPrecision()) {
+        if (Math.abs(this.elements[i][j] - M[i][j]) > Sylvester.precision) {
           return false;
         }
       }
@@ -480,7 +480,7 @@ export class Matrix {
     while (i--) {
       j = nj;
       while (j--) {
-        if (Math.abs(M.elements[i][j]) > getPrecision()) {
+        if (Math.abs(M.elements[i][j]) > Sylvester.precision) {
           rank++;
           break;
         }
@@ -570,7 +570,7 @@ export class Matrix {
 
   snapTo(x) {
     return this.map(function (p) {
-      return Math.abs(p - x) <= getPrecision() ? x : p;
+      return Math.abs(p - x) <= Sylvester.precision ? x : p;
     });
   }
 

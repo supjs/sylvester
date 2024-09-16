@@ -1,7 +1,7 @@
 import { Line } from './line.js';
 import { LineSegment } from './lineSegment.js';
 import { Plane } from './plane.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 import { expect, test } from 'vitest';
 
@@ -83,7 +83,7 @@ test('normalize', () => {
 });
 
 test('angleFrom', () => {
-  let k = getPrecision();
+  let k = Sylvester.precision;
   expect(Math.PI / 2).toEqual(Vector.i.angleFrom(Vector.j));
   expect(Math.round((Math.PI / 4) * k) / k).toEqual(
     Math.round(new Vector([1, 0]).angleFrom(new Vector([1, 1])) * k) / k,

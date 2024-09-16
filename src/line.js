@@ -1,6 +1,6 @@
 import { Matrix } from './matrix.js';
 import { Plane } from './plane.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 
 export class Line {
@@ -37,7 +37,9 @@ export class Line {
       return obj.isParallelTo(this);
     }
     let theta = this.direction.angleFrom(obj.direction);
-    return Math.abs(theta) <= getPrecision() || Math.abs(theta - Math.PI) <= getPrecision();
+    return (
+      Math.abs(theta) <= Sylvester.precision || Math.abs(theta - Math.PI) <= Sylvester.precision
+    );
   }
 
   distanceFrom(obj) {
@@ -75,7 +77,7 @@ export class Line {
       return this.contains(obj.start) && this.contains(obj.end);
     }
     let dist = this.distanceFrom(obj);
-    return dist !== null && dist <= getPrecision();
+    return dist !== null && dist <= Sylvester.precision;
   }
 
   positionOf(point) {
@@ -96,7 +98,7 @@ export class Line {
     if (obj.normal) {
       return obj.intersects(this);
     }
-    return !this.isParallelTo(obj) && this.distanceFrom(obj) <= getPrecision();
+    return !this.isParallelTo(obj) && this.distanceFrom(obj) <= Sylvester.precision;
   }
 
   intersectionWith(obj) {

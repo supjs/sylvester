@@ -1,6 +1,6 @@
 import { Line } from './line.js';
 import { Matrix } from './matrix.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 
 export class Plane {
@@ -55,7 +55,10 @@ export class Plane {
           theta = N.angleFrom(prevN);
           if (theta !== null) {
             if (
-              !(Math.abs(theta) <= getPrecision() || Math.abs(theta - Math.PI) <= getPrecision())
+              !(
+                Math.abs(theta) <= Sylvester.precision ||
+                Math.abs(theta - Math.PI) <= Sylvester.precision
+              )
             ) {
               return null;
             }
@@ -114,7 +117,9 @@ export class Plane {
     if (obj.normal) {
       // obj is a plane
       theta = this.normal.angleFrom(obj.normal);
-      return Math.abs(theta) <= getPrecision() || Math.abs(Math.PI - theta) <= getPrecision();
+      return (
+        Math.abs(theta) <= Sylvester.precision || Math.abs(Math.PI - theta) <= Sylvester.precision
+      );
     } else if (obj.direction) {
       // obj is a line
       return this.normal.isPerpendicularTo(obj.direction);
@@ -124,7 +129,7 @@ export class Plane {
 
   isPerpendicularTo(plane) {
     let theta = this.normal.angleFrom(plane.normal);
-    return Math.abs(Math.PI / 2 - theta) <= getPrecision();
+    return Math.abs(Math.PI / 2 - theta) <= Sylvester.precision;
   }
 
   distanceFrom(obj) {
@@ -159,7 +164,7 @@ export class Plane {
       let diff = Math.abs(
         N[0] * (A[0] - P[0]) + N[1] * (A[1] - P[1]) + N[2] * (A[2] - (P[2] || 0)),
       );
-      return diff <= getPrecision();
+      return diff <= Sylvester.precision;
     }
   }
 

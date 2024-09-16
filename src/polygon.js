@@ -2,7 +2,7 @@ import { LineSegment } from './lineSegment.js';
 import { Matrix } from './matrix.js';
 import { Plane } from './plane.js';
 import { PolygonVertex } from './polygonVertex.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 import { LinkedListNode, CircularLinkedList } from './linkedList.js';
 
@@ -263,11 +263,11 @@ export class Polygon {
         return;
       }
       theta += (A.cross(B).isParallelTo(self.plane.normal) ? 1 : -1) * dt;
-      if (theta >= 2 * Math.PI - getPrecision()) {
+      if (theta >= 2 * Math.PI - Sylvester.precision) {
         loops++;
         theta -= 2 * Math.PI;
       }
-      if (theta <= -2 * Math.PI + getPrecision()) {
+      if (theta <= -2 * Math.PI + Sylvester.precision) {
         loops--;
         theta += 2 * Math.PI;
       }

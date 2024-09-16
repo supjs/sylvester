@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { Matrix } from './matrix.js';
-import { getPrecision } from './precision.js';
+import { Sylvester } from './sylvester.js';
 import { Vector } from './vector.js';
 
 test('create', () => {
@@ -332,7 +332,7 @@ test('determinant', () => {
         M[0][1] * (M[1][2] * M[2][0] - M[1][0] * M[2][2]) +
         M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0]) -
         new Matrix(M).determinant() <
-        getPrecision(),
+        Sylvester.precision,
     ).toBeTruthy();
   }
   expect(Matrix.Random(3, 4).determinant()).toBeNull();
